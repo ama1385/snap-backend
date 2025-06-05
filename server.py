@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 import requests, base64, os, datetime
-from urllib.parse import quote as url_quote  # ✅ استبدال آمن لـ url_quote
+from urllib.parse import quote as url_quote
 from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, IMGBB_API_KEY
 
 app = Flask(__name__)
