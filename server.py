@@ -44,7 +44,6 @@ def location():
 def fingerprint():
     ip = request.remote_addr
     ua = request.headers.get('User-Agent', 'غير معروف')
-
     isp_info = requests.get("https://ipapi.co/json/").json()
     isp = isp_info.get("org", "غير معروف")
     city = isp_info.get("city", "?")
@@ -85,4 +84,5 @@ def trigger_action(action):
     return 'OK'
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 10000))  # البورت الأساسي 10000 أو اللي تعطيه Render
+    app.run(debug=True, host='0.0.0.0', port=port)
