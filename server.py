@@ -1,6 +1,6 @@
 from flask import Flask, request, render_template, jsonify
 import requests, base64, os, datetime
-from urllib.parse import quote as url_quote
+from urllib.parse import quote as url_quote  # ✅ بديل آمن ومضمون
 from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, IMGBB_API_KEY
 
 app = Flask(__name__)
@@ -85,4 +85,4 @@ def trigger_action(action):
     return 'OK'
 
 if __name__ == '__main__':
-    app.run(debug=True, port=10000, host="0.0.0.0")
+    app.run(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
